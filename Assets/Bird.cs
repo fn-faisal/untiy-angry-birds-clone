@@ -19,12 +19,16 @@ public class Bird : MonoBehaviour
     }
 
     private void OnMouseDown(){
+        GetComponent<LineRenderer>().enabled = true;
         var spriteRenderer = GetComponent<SpriteRenderer>(); 
         spriteRenderer.color = Color.red;   
     }
 
     private void Update()
     {
+        GetComponent<LineRenderer>().SetPosition(0, _initialPosition);
+        GetComponent<LineRenderer>().SetPosition(1, transform.position);
+
         if ( _launched && GetComponent<Rigidbody2D>().velocity.magnitude <= 0)
         {
             _timeSittingAround += Time.deltaTime;
@@ -42,6 +46,8 @@ public class Bird : MonoBehaviour
     }
 
     private void OnMouseUp() {
+        GetComponent<LineRenderer>().enabled = false;
+
         var spriteRenderer = GetComponent<SpriteRenderer>(); 
         spriteRenderer.color = Color.white;
         var force = Vector2.Distance(this._initialPosition, new Vector2(transform.position.x, transform.position.y));
