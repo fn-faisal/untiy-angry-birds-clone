@@ -26,8 +26,8 @@ public class Bird : MonoBehaviour
 
     private void Update()
     {
-        GetComponent<LineRenderer>().SetPosition(0, _initialPosition);
-        GetComponent<LineRenderer>().SetPosition(1, transform.position);
+        GetComponent<LineRenderer>().SetPosition(1, _initialPosition);
+        GetComponent<LineRenderer>().SetPosition(0, transform.position);
 
         if ( _launched && GetComponent<Rigidbody2D>().velocity.magnitude <= 0)
         {
